@@ -211,3 +211,125 @@ function mid(inString){
 }
 
 bai8();
+
+
+function bai11(){
+    const btn = document.querySelector(".bai11 button");
+    const input = document.querySelectorAll(".bai11 input");
+    let value;
+    let result = document.querySelector(".bai11 .result");
+    btn.addEventListener("click",function(){
+        value = intersection(input[0].value,input[1].value);
+        result.innerText = value; 
+    })
+}
+
+
+function intersection(inString1, inString2) {
+    let arr1 = inString1.split('')
+    let arr2 = inString2.split('')
+    return arr1.filter(value => arr2.includes(value));
+}
+bai11();
+
+function bai12(){
+    const btn = document.querySelector(".bai12 button");
+    const input = document.querySelectorAll(".bai12 input");
+    let value;
+    let result = document.querySelector(".bai12 .result");
+    btn.addEventListener("click",function(){
+        value = unduplicated(input[0].value,input[1].value);
+        result.innerText = value; 
+    })
+}
+
+
+function unduplicated(inString1, inString2) {
+    let arr1 = inString1.split('')
+    let arr2 = inString2.split('')
+    let returnArray = [...arr1,...arr2].join('')
+    return deleteDuplicate(returnArray);
+}
+bai12();
+
+function bai13(){
+    const btn = document.querySelector(".bai13 button");
+    const input = document.querySelectorAll(".bai13 input");
+    let value;
+    let result = document.querySelector(".bai13 .result");
+    btn.addEventListener("click",function(){
+        value = elementOnly(input[0].value,input[1].value);
+        result.innerText = value; 
+    })
+}
+
+
+function elementOnly(inString1, inString2) {
+    let arr1 = inString1.split('')
+    let arr2 = inString2.split('')
+    let arr3 = arr1.filter((value) => !arr2.includes(value));
+    let arr4 = arr2.filter((value) => !arr1.includes(value));
+    return [arr3,arr4]
+}
+bai13();
+
+
+function bai16(){
+    const btn = document.querySelector(".bai16 button");
+    const input = document.querySelectorAll(".bai16 input");
+    let value;
+    let result = document.querySelector(".bai16 .result");
+    btn.addEventListener("click",function(){
+        value = elementOnly(input[0].value,input[1].value);
+        result.innerText = value; 
+    })
+}
+function Thaythe(inString) {
+    let array = inString.split('');
+    console.log(array);
+    
+    return array.map(x => {
+        if(x % 2 != 0) return x*x;
+    });
+    
+}
+bai16();
+
+function bai17(){
+    const btn = document.querySelector(".bai17 button");
+    const input = document.querySelectorAll(".bai17 input");
+    let value;
+    let result = document.querySelector(".bai17 .result");
+    btn.addEventListener("click",function(){
+        value = firstChar(input[0].value,input[1].value);
+        result.innerText = value; 
+    })
+}
+
+function firstChar(names, char) { 
+    names = names.split(' '); 
+    let filteredNames = names.filter(name => name.charAt(0) === char);
+    
+    return filteredNames;
+}
+
+bai17();
+
+const nestedArray = [[1, 2], [3, 4], [5, 6]];
+function bai19(){
+    const btn = document.querySelector(".bai19 button");
+    let value;
+    let result = document.querySelector(".bai19 .result");
+    btn.addEventListener("click",function(){
+        value = ghepMang(nestedArray);
+        result.innerText = value; 
+    })
+}
+function ghepMang(inArray) {
+    console.log(inArray);
+    let returnArray = inArray.reduce((arr,currentValue) => [...arr,...currentValue],[]);
+
+    return returnArray;
+    
+}
+bai19();
