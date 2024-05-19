@@ -315,6 +315,29 @@ function firstChar(names, char) {
 
 bai17();
 
+function bai18(){
+    const shoppingCart = [
+        { name: "Shirt", price: 20, discount: 0.1 },
+        { name: "Jeans", price: 40, discount: 0.2 },
+        { name: "Shoes", price: 60, discount: 0.15 }
+      ];
+    const btn = document.querySelector(".bai18 button");
+    let value;
+    let result = document.querySelector(".bai18 .result");
+    btn.addEventListener("click",function(){
+        value = tongTien(shoppingCart);
+        result.innerText = value; 
+    })
+}
+function tongTien(arr) {
+    console.log(arr);
+    let total = arr.reduce((total,value) => 
+        total += parseInt(value.price)*parseFloat(value.discount)
+    ,0)
+    return total
+}
+bai18();
+
 const nestedArray = [[1, 2], [3, 4], [5, 6]];
 function bai19(){
     const btn = document.querySelector(".bai19 button");
@@ -333,3 +356,98 @@ function ghepMang(inArray) {
     
 }
 bai19();
+
+function bai21(){
+    const btn = document.querySelector(".bai21 button");
+    const input = document.querySelector(".bai21 input");
+    let value;
+    let result = document.querySelector(".bai21 .result");
+    btn.addEventListener("click",function(){
+        value = TrungBinh(input.value);
+        result.innerText = value; 
+    })
+}
+
+function TrungBinh(inString) { 
+    arr = inString.split(''); 
+    console.log(arr)
+    let tong = arr.reduce((total,currentValue) => total += parseInt(currentValue),0);
+    console.log(tong)
+    return (tong/arr.length).toFixed(2);
+}
+
+bai21();
+
+function bai22(){
+    const btn = document.querySelector(".bai22 button");
+    const input = document.querySelector(".bai22 input");
+    let value;
+    let result = document.querySelector(".bai22 .result");
+    btn.addEventListener("click",function(){
+        value = Tuoi(input.value);
+        result.innerText = value; 
+    })
+}
+
+function Tuoi(inString) { 
+    let birth = inString.split('-');
+
+    const today = new Date();
+    console.log(birth)
+    let age = today.getFullYear() - birth[0];
+    if(age === 0) return 0;
+
+    const month = today.getMonth() - birth[1];
+    const day = today.getDate() - birth[2];
+
+    if (month < 0 || (month === 0 && day < 0)) {
+        age--;
+    }
+
+    return age;
+}
+
+bai22();
+
+function bai23(){
+    const btn = document.querySelector(".bai23 button");
+    const input = document.querySelector(".bai23 input");
+    let value;
+    let result = document.querySelector(".bai23 .result");
+    btn.addEventListener("click",function(){
+        value = Ngay(input.value);
+        result.innerText = value; 
+    })
+}
+
+function Ngay(inString) { 
+    let day = inString.split('-');
+
+    const today = new Date();
+    return  Math.abs(today.getDate() - day[2]);
+}
+
+bai23();
+
+function bai24(){
+    const btn = document.querySelector(".bai24 button");
+    const input = document.querySelectorAll(".bai24 input");
+    let value;
+    let result = document.querySelector(".bai24 .result");
+    btn.addEventListener("click",function(){
+        value = khoangcach(input[0].value,input[1].value);
+        result.innerText = value; 
+    })
+}
+
+function khoangcach(day1, day2) { 
+    let dayStart = new Date(day1)
+    let dayEnd = new Date(day2)
+    
+    const milisecond = Math.abs(dayStart - dayEnd);
+    const miliSecondDay = 24*60*60*1000;
+    
+    return milisecond/miliSecondDay;
+}
+
+bai24();
